@@ -1,12 +1,14 @@
-import PlaceCard from '../../components/place-card/place-card';
+//import PlaceCard from '../../components/place-card/place-card';
 import {Helmet} from 'react-helmet-async';
-
+import PlaceList from '../../components/place-list/place-list';
+import { Offer } from '../../types';
 type MainScreenProps = {
   cardAmount: number;
+  offers: Offer[];
 }
 
 
-function MainScreen ({cardAmount}: MainScreenProps): JSX.Element {
+function MainScreen ({cardAmount, offers}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -74,11 +76,7 @@ function MainScreen ({cardAmount}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
+                <PlaceList offers={offers}/>
               </div>
             </section>
 

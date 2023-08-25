@@ -13,11 +13,17 @@ import {HelmetProvider} from 'react-helmet-async';
 
 import Header from '../header/header';
 
+import { Offer,
+  //Review
+} from '../../types';
+
 type MainScreenProps = {
   cardAmount: number;
+  offers: Offer[];
+  //reviews: Review[];
 }
 
-export default function App({cardAmount}: MainScreenProps): JSX.Element {
+export default function App({cardAmount, offers}: MainScreenProps): JSX.Element {
   return(
     <HelmetProvider>
       <BrowserRouter>
@@ -25,12 +31,12 @@ export default function App({cardAmount}: MainScreenProps): JSX.Element {
           <Route path ="/" element={<Header />}>
             <Route
               path = {AppRoute.Root}
-              index element = {<MainScreen cardAmount={cardAmount} />}
+              index element = {<MainScreen cardAmount={cardAmount} offers = {offers}/>}
             />
             <Route
               path = {AppRoute.Favorites}
               element = {
-                <PrivateRoute authorizationStatus = {AuthorizationStatus.NoAuth}>
+                <PrivateRoute authorizationStatus = {AuthorizationStatus.Auth}>
                   <FavoritesScreen />
                 </PrivateRoute>
               }
