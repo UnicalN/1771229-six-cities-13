@@ -1,5 +1,7 @@
 import { Offer } from '../../types';
 import { MAX_RATING } from '../../const';
+import {useState} from 'react';
+import PremiumMark from '../premium-mark/premium-mark';
 type PlaceCardProps = {
   offer: Offer;
 }
@@ -8,11 +10,26 @@ export default function PlaceCard({offer} : PlaceCardProps) : JSX.Element {
 
   const { isFavorite, isPremium, previewImage, price, title, type, rating, id } = offer;
 
+  const [, setCardStatus] = useState({isActive : false});
+
+  const handleMouseEnter = () => {
+    setCardStatus({isActive: true});
+    console.log(`Card ${id} is active `);
+  };
+
+  const handleMouseLeave = () => {
+    setCardStatus({isActive: false});
+    console.log(`Card ${id} is inactive `);
+  };
+
   return (
-    <article className="cities__card place-card" id = { id }>
-      <div className="place-card__mark">
-        <span>{ isPremium ? 'Premium' : '' }</span>
-      </div>
+    <article className="cities__card place-card" id = { id }
+      onMouseEnter={() => handleMouseEnter()}
+      onMouseLeave={() => handleMouseLeave()}
+    >
+
+      <PremiumMark isPremium = {isPremium}/>
+
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={ previewImage } width={260} height={200} alt="Place image" />
