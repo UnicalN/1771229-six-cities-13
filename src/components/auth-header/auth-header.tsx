@@ -4,6 +4,7 @@ type AuthHeaderProps = {
   authData : AuthData;
 }
 
-export function AuthHeader(AuthHeaderProps: AuthHeaderProps){
- return(<>Auth will be here</>);
+export function AuthHeader(AuthHeaderProps: AuthHeaderProps)
+{
+  return(<>Auth will be here</>);
 }
