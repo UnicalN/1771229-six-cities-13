@@ -15,4 +15,5 @@ export const Setting = {
   adCount: 5,
 } as const;
 
+
 export const MAX_RATING = 5;

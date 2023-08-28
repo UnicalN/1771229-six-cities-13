@@ -50,3 +50,11 @@ export type Review = {
   comment: string;
   rating: number;
   }
+
+export type AuthData = {
+    name: string;
+    avatarUrl : string;
+    isPro : boolean;
+    email : string;
+    token : string;
+    }
